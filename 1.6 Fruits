@@ -1,0 +1,7 @@
+fruits = ["õun", "banaan", "kirss", "apelsin"] # List of fruits
+for x in fruits: # Loop through each fruit
+  if x == "banaan": # If the fruit is banana
+    break # Exit the loop
+  print(x) # Print the fruit
+
+# Random exercise not included in the programming course :?
