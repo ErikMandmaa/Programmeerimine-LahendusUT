@@ -1,0 +1,4 @@
+jagataja = int(input("Sisestage jagatav (täisarv): ")) # Input the dividend (integer)
+jagaja = int(input("Sisestage jagaja (täisarv): ")) # Input the divisor (integer)
+jääk = jagataja % jagaja # Calculate the remainder
+print(f"Jääk on: {jääk}") # Print the remainder
