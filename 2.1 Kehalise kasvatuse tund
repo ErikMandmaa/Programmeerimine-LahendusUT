@@ -1,0 +1,6 @@
+tuule_kiirus = float(input("Sisesta tuule kiirus (m/s): ")) # wind speed in meter per second (float)
+
+if tuule_kiirus < 8.0: # if the wind speed is less than 8.0 m/s
+    print("Kehalise kasvatuse tund võib toimuda õues") # PE class can take place outdoors
+else: # otherwise
+    print("Kehalise kasvatuse tund peaks toimuma siseruumis") # PE class should take place indoors

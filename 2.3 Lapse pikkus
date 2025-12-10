@@ -1,0 +1,12 @@
+ema_pikkus = int(input("Sisesta ema pikkus sentimeetrites: ")) # mother's height in centimeters (integer)
+isa_pikkus = int(input("Sisesta isa pikkus sentimeetrites: ")) # father's height in centimeters (integer)
+lapse_sugu = input('Sisesta lapse sugu ("M" poiss, "N" tüdruk): ') # input for child's gender (string)
+
+if lapse_sugu.lower() == "m": # if the child is a male
+    eeldatav_pikkus = (ema_pikkus + isa_pikkus + 13) / 2 # calculate the expected height for a male
+    print(f"Lapse eeldatav pikkus on {eeldatav_pikkus:.1f} cm") # print the expected height for a male
+elif lapse_sugu.lower() == "n": # if the child is a female
+    eeldatav_pikkus = (ema_pikkus + isa_pikkus - 13) / 2 # calculate the expected height for a female
+    print(f"Lapse eeldatav pikkus on {eeldatav_pikkus:.1f} cm") # print the expected height for a female
+else: # if the input is invalid
+    print("Vigane sisestus lapse soo kohta.") # print an error message for invalid input

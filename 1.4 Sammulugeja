@@ -1,0 +1,10 @@
+sammu_pikkus_str = input("Sisestage sammu pikkus meetrites (ujukomaarv): ") # input for step length (string)
+sammu_pikkus = float(sammu_pikkus_str) # convert string to float
+
+labitav_vahemaa_str = input("Sisestage labitav vahemaa meetrites (taisarv): ") # input for distance to be covered (string)
+labitav_vahemaa = int(labitav_vahemaa_str) # convert string to integer
+
+sammude_arv = labitav_vahemaa / sammu_pikkus # calculate number of steps
+
+umardatud_sammude_arv = round(sammude_arv) # round the number of steps to nearest integer
+print(f"Sammude arv on: {umardatud_sammude_arv}") # print the number of steps

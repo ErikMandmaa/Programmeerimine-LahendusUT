@@ -1,0 +1,19 @@
+arv1 = int(input("Sisesta esimene täisarv: ")) # input for the first amount (integer)
+tehe = input("Sisesta tehe (+, -, *, /): ") # input for the operation (+, -, *, /)
+arv2 = int(input("Sisesta teine täisarv: ")) # input for the second amount (integer)
+
+if tehe == "+": # check for addition of the two amounts
+    tulemus = arv1 + arv2 # perform addition of the two amounts
+    print("Tulemus:", tulemus) # print the result
+elif tehe == "-": # check for subtraction of the two amounts
+    tulemus = arv1 - arv2 # perform subtraction of the two amounts
+    print("Tulemus:", tulemus) # print the result
+elif tehe == "*": # check for multiplication of the two amounts
+    tulemus = arv1 * arv2 # perform multiplication of the two amounts
+    print("Tulemus:", tulemus) # print the result
+elif tehe == "/": # check for division of the two amounts
+    if arv2 == 0: # check for division by zero
+        print("Nulliga ei saa jagada.") # print cannot divide by zero
+    else: # otherwise
+        tulemus = arv1 / arv2 # perform division of the two amounts
+        print("Tulemus:", tulemus) # print the result

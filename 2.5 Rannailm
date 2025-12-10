@@ -1,0 +1,10 @@
+temp = int(input("Sisesta välistemperatuur (täisarv): ")) # input for outside temperature (integer)
+paike = input("Kas päike paistab? (jah/ei): ").strip().lower() # input for whether the sun is shining (yes/no)
+roheline_lipp = input("Kas rannas lehvib roheline lipp? (jah/ei): ").strip().lower() # input for whether there is a green flag at the beach (yes/no)
+
+if roheline_lipp == "jah": # check for the green flag
+    print("Võid minna randa!") # print you can go to the beach if there is a green flag
+elif temp >= 20 and paike == "jah": # check if the temperature is 20 degrees celsius or higher and if the sun is shining
+    print("Võid minna randa!") # print you can go to the beach if the conditions are met
+else: # otherwise
+    print("Täna ei tasu randa minna.") # print you should not go to the beach today

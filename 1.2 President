@@ -1,0 +1,5 @@
+aasta = 2021 # year when Alar Karis was elected president
+president = "Alar Karis" # name of the president
+lause_keskosa = ". aastal valiti Eesti presidendiks." # middle part of the sentence
+lause = str(aasta) + lause_keskosa + president # complete sentence
+print(lause) # print the complete sentence

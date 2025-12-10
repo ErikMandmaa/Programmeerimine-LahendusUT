@@ -1,0 +1,29 @@
+def arvuta_jooksu_punktid(aeg): # time in seconds
+    A = 25.4347 # points of A
+    B = 18 # points of B
+    C = 1.81 # points of C
+    punktid = A * (B - aeg) ** C # calculate points
+    return round(punktid) # round to nearest integer
+
+
+def arvuta_kaugushüppe_punktid(kaugus): # distance in centimeters
+    A = 0.14354 # points of A
+    B = 220 # points of B
+    C = 1.4 # points of C
+    punktid = A * (kaugus - B) ** C # calculate points
+    return round(punktid) # round to nearest integer
+
+
+jooksu_aeg = float(input("Sisesta 100 meetri jooksu aeg sekundites (kaks koma kohta): ")) # time in seconds (float)
+kaugushüppe_kaugus = int(input("Sisesta kaugushüppe kaugus sentimeetrites (täisarv): ")) # distance in centimeters (integer)
+
+
+jooksu_punktid = arvuta_jooksu_punktid(jooksu_aeg) # calculate running points
+kaugushüppe_punktid = arvuta_kaugushüppe_punktid(kaugushüppe_kaugus) # calculate long jump points
+
+
+kokku = jooksu_punktid + kaugushüppe_punktid # total points (running + long jump)
+print(f"100 meetri jooksu punktid: {jooksu_punktid - 1}") # print running points
+print(f"Kaugushüppe punktid: {kaugushüppe_punktid - 1}") # print long jump points
+print(f"Kokku saadud punktid: {kokku - 1}") # print total points
+print(f"jooksu_aeg = 2013") # print fixed running time

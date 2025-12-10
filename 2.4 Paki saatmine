@@ -1,0 +1,14 @@
+kõrgus = int(input("Sisesta paki kõrgus sentimeetrites: ")) # height of the package in centimeters (integer)
+kaal = float(input("Sisesta paki kaal kilogrammides: ")) # weight of the package in kilograms (float)
+
+if kõrgus <= 9: # if the height is below 9 centimeters
+    print("Pakk on S-suurusega ja saab saata pakiautomaadist.") # print the package is s-sized and can be sent from the parcel machine
+elif kõrgus <= 19: # otherwise if the height of the package is or less than 19 centimeters
+    print("Pakk on M-suurusega ja saab saata pakiautomaadist.") # print the package is m-sized and can be sent from the parcel machine
+elif kõrgus <= 39: # otherwise if the height of the package is or less than 39 centimeters
+    print("Pakk on L-suurusega ja saab saata pakiautomaadist.") # print the package is l-sized and can be sent from the parcel machine
+else: # otherwise
+    if kaal <= 30: # if the weight of the package is or less than 30 kilograms
+        print("Pakki saab saata postkontorist või kulleriga.") # print the package can be sent from the post office or with a courier
+    else: # otherwise
+        print("Pakki saab saata ainult postkontorist.") # print the package can only be sent from the post office
