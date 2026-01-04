@@ -1,0 +1,29 @@
+from datetime import datetime
+
+nadalapäevad = {
+    0: "esmaspäev",
+    1: "teisipäev",
+    2: "kolmapäev",
+    3: "neljapäev",
+    4: "reede",
+    5: "laupäev",
+    6: "pühapäev"
+}
+
+tähtpäev = input("Sisesta tähtpäev: ")
+kuupäev = input("Sisesta kuupäev (nt 24.02.2022): ")
+
+kuupäev_obj = datetime.strptime(kuupäev, "%d.%m.%Y")
+
+nädalapäev_nr = kuupäev_obj.weekday()
+nädalapäev = nadalapäevad[nädalapäev_nr]
+
+print(f"Nädalapäev: {nädalapäev}")
+
+with open("tähtpäevad.txt", "a", encoding="UTF-8") as fail:
+    fail.write(tähtpäev + "\n")
+    fail.write(kuupäev + "\n")
+    fail.write(nädalapäev + "\n")
+    fail.write("\n")
+
+print("Tähtpäev on edukalt lisatud faili tähtpäevad.txt!")

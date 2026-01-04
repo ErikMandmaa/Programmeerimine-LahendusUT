@@ -1,0 +1,12 @@
+faili_nimi = input("Sisesta faili nimi: ")
+
+with open(faili_nimi, "r", encoding="utf-8") as f:
+    tekst = f.read()
+
+tekst = tekst.replace("8", "ö")
+tekst = tekst.replace("2", "ä")
+tekst = tekst.replace("6", "õ")
+tekst = tekst.replace("y", "ü")
+
+print("\nParandatud tekst:\n")
+print(tekst)

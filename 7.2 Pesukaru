@@ -1,0 +1,10 @@
+lahtefail = input("Sisesta lähtefaili nimi: ")
+sihtfail = input("Sisesta sihtfaili nimi: ")
+
+with open(lahtefail, encoding="UTF-8") as f:
+    sisu = f.read().replace("\n", " ")
+
+with open(sihtfail, "w", encoding="UTF-8") as f:
+    f.write(sisu)
+
+print(f"Tekst kirjutati faili '{sihtfail}'.")

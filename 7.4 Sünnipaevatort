@@ -1,0 +1,31 @@
+import math
+
+def tordi_kogus(kogus_inimese_kohta, inimeste_arv):
+    grammides = kogus_inimese_kohta * inimeste_arv
+    kilogrammides = grammides / 1000
+    return math.ceil(kilogrammides)
+
+faili_nimi = input("Sisesta faili nimi: ")
+
+try:
+    with open(faili_nimi, 'r', encoding='utf-8') as fail:
+        read = fail.readlines()
+    
+    torti_soovad = 0
+    for rida in read:
+        rida = rida.strip()
+        if rida.startswith("jah"):
+            torti_soovad += 1
+    
+    print(f"Tordi tellimisel tuleb arvestada {torti_soovad} inimesega.")
+    
+    tavaline_tort = tordi_kogus(150, torti_soovad)
+    print(f"Tavalise tordi puhul on vaja {tavaline_tort} kilo torti.")
+    
+    marjazelee_tort = tordi_kogus(200, torti_soovad)
+    print(f"Marjaželee kattega tordi puhul on vaja {marjazelee_tort} kilo torti.")
+
+except FileNotFoundError:
+    print(f"Viga: Faili '{faili_nimi}' ei leitud!")
+except Exception as e:
+    print(f"Viga faili lugemisel: {e}")

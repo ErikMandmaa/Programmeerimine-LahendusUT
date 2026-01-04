@@ -1,0 +1,22 @@
+import easygui
+
+easygui.msgbox("Tere! Olen vestlusrobot. Küsi minult midagi!", "Vestlusrobot")
+
+kysimus = easygui.enterbox("Sisesta oma küsimus:", "Vestlusrobot")
+
+kysimus_vaiketahtedega = kysimus.lower()
+
+if "ilm" in kysimus_vaiketahtedega:
+    vastus = "Täna on ilus päikesepaisteline ilm! ☀️"
+elif "aeg" in kysimus_vaiketahtedega or "kell" in kysimus_vaiketahtedega:
+    vastus = "Praegu on aeg programmeerimisega tegeleda! ⏰"
+elif "nimi" in kysimus_vaiketahtedega:
+    vastus = "Minu nimi on RoboAda. Meeldiv tutvuda! 🤖"
+elif "vanus" in kysimus_vaiketahtedega or "vana" in kysimus_vaiketahtedega:
+    vastus = "Olen sündinud just äsja, kui sa selle programmi käivitasid! 👶"
+elif "tere" in kysimus_vaiketahtedega or "hei" in kysimus_vaiketahtedega:
+    vastus = "Tere! Kuidas sul läheb? 👋"
+else:
+    vastus = "Vabandust, ma ei saanud su küsimusest aru. Proovi küsida ilma, aja või minu nime kohta!"
+
+easygui.msgbox(vastus, "Vestlusroboti vastus")
