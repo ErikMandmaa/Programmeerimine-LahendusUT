@@ -1,0 +1,35 @@
+def hinnete_keskmine(hinded: list[int]) -> float:
+    if not hinded:
+        return -1
+    if 1 in hinded or 2 in hinded:
+        return -1
+    return round(sum(hinded) / len(hinded), 1)
+
+def main():
+    faili_nimi = input("Sisesta faili nimi: ")
+
+    hinded = []
+    try:
+        with open(faili_nimi, "r", encoding="utf-8") as f:
+            for rida in f:
+                rida = rida.strip()
+                if rida.isdigit():  # kontrollime, et rida on täisarv
+                    hinded.append(int(rida))
+    except FileNotFoundError:
+        print("Faili ei leitud.")
+        return
+
+    if not hinded:
+        print("Failis ei olnud kehtivaid hindeid.")
+        return
+
+    keskmine = hinnete_keskmine(hinded)
+
+    if keskmine == -1:
+        print("Õpilasel on mitterahuldavaid hindeid.")
+    else:
+        print(f"Hinnete keskmine: {keskmine}")
+
+if __name__ == "__main__":
+    main()
+

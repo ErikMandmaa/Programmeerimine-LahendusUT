@@ -1,0 +1,8 @@
+def loits(loitsu_sonum):
+    return loitsu_sonum.lower()
+
+kordi = int(input("Mitu korda soovite loitsu lausuda? "))
+sonum = input("Sisesta loits: ")
+
+for _ in range(kordi):
+    print(loits(sonum))

@@ -1,0 +1,6 @@
+def elektrihind(senti_kWh: float) -> float:
+    return (senti_kWh * 1000) / 100
+
+hind_senti = float(input("Sisesta elektrihind sentides kilovatt-tunni kohta: "))
+hind_euro_MWh = elektrihind(hind_senti)
+print(f"{hind_euro_MWh:.13f}")

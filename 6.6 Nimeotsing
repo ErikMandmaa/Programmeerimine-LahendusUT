@@ -1,0 +1,23 @@
+def  nimeotsing(nimed, algustäht, min_pikkus):
+    sobivad_nimed = ()
+    algustäht_vaike = algustäht.lower()
+    for nimi in nimed:
+        if nimi.startswith(algustäht_vaike) and len(nimi) >= min_pikkus:
+            sobivad_nimed.append(nimi)
+    return sobivad_nimed
+
+failinimi = input("Sisesta faili nimi: ")
+
+try:
+    with open(failinimi, 'r', encoding='utf-8') as fail:
+        nimed = [rida.strip() for rida in fail if rida.strip()]
+except FileNotFoundError:   
+    print(f"Faili '{failinimi}' ei leitud.")
+    exit()
+    
+algustäht = input("Sisesta algustäht: ")
+min_pikkus = int(input("Sisesta minimaalne pikkus: "))
+
+sobivad_nimed = nimeotsing(nimed, algustäht, min_pikkus)
+
+print(sobivad_nimed)

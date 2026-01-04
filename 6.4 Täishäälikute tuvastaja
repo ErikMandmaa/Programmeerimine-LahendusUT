@@ -1,0 +1,16 @@
+def täishäälikud(sõna: str) -> int:
+    täishäälikud = {"a", "e", "i", "o", "u", "õ", "ä", "ö", "ü"}
+    arv = 0
+    for täht in sõna:
+        if täht in täishäälikud:
+            arv += 1
+    return arv
+
+sõna = input("Sisesta sõna: ")
+arv = täishäälikud(sõna)
+print(f"Sõnas on {arv} täishäälik(ut).")
+
+
+
+
+    

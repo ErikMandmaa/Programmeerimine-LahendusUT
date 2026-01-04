@@ -1,0 +1,16 @@
+import math
+
+def mitu_ringi(ringi_pikkus: float) -> int:
+    return math.ceil(30 / ringi_pikkus)
+
+def main():
+    luhike_ring = float(input("Sisesta lühema ringi pikkus (km): "))
+    pikk_ring = float(input("Sisesta pikema ringi pikkus (km): "))
+
+    luhike_ringide_arv = mitu_ringi(luhike_ring)
+    pikk_ringide_arv = mitu_ringi(pikk_ring)
+    print(f"Lühema ringi läbimiseks vähemalt 30 km: {luhike_ringide_arv} ringi")
+    print(f"Pikema ringi läbimiseks vähemalt 30 km: {pikk_ringide_arv} ringi")
+
+if __name__ == "__main__":
+    main()
