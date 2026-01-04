@@ -1,0 +1,18 @@
+nimed = [
+    "Anne",
+    "Sirje",
+    "Tiina",
+    "Ene",
+    "Tiiu",
+    "Urve",
+    "Ülle",
+    "Katrin",
+    "Piret",
+    "Karin"
+]
+
+koht = int(input("Mitmendal kohal olevat nime soovid näha? "))
+
+nimi = nimed[koht - 1]
+
+print(f"{koht}. kohal on nimi {nimi}.")

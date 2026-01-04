@@ -1,0 +1,7 @@
+n = int(input("Sisesta oma naturaalarv, (positiivne täisarv) : "))
+
+summa = 0
+for i in range(1, n + 1):
+    summa += i
+    
+print(f"Kokku tehakse {summa} kordust.")

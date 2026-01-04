@@ -1,0 +1,23 @@
+kuu = input("Sisesta kuu nimi: ")
+failinimi = kuu + ".txt"
+
+sissetulekud = 0
+valjaminekud = 0
+
+with open(failinimi, "r", encoding="utf-8") as f:
+    for rida in f:
+        summa = float(rida.strip())
+        if summa > 0:
+            sissetulekud += summa
+        else:
+            valjaminekud += abs(summa) 
+
+print(f"Sissetulekud: {sissetulekud}")
+print(f"Väljaminekud: {valjaminekud}")
+
+if sissetulekud > valjaminekud:
+    print("Selles kuus oled plussis")
+elif valjaminekud > sissetulekud:
+    print("Selles kuus oled miinuses")
+else:
+    print("Selles kuus oled nullis")

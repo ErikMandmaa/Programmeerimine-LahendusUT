@@ -1,0 +1,19 @@
+with open('alghinnad.txt', 'r', encoding='utf-8') as fail:
+    alghinnad = [int(rida.strip()) for rida in fail]
+
+
+with open('hinnakordajad.txt', 'r', encoding='utf-8') as fail:
+    hinnakordajad = [float(rida.strip()) for rida in fail]
+
+kogumaksumus = 0
+
+for i in range(len(alghinnad)):
+    alghind = alghinnad[i]
+    kordaja = hinnakordajad[i]
+    kampaaniahind = alghind * kordaja
+    
+    print(f"{i + 1}. toote alghind: {alghind}, kampaaniahind: {kampaaniahind}")
+    
+    kogumaksumus += kampaaniahind
+
+print(f"\nToodete kogumaksumus: {kogumaksumus}")

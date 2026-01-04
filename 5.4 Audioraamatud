@@ -1,0 +1,14 @@
+failinimi = input("Sisesta faili nimi: ")
+
+with open(failinimi, "r", encoding="utf-8") as f:
+    raamatud = []
+    for rida in f:
+        raamatud.append(rida.strip())
+
+print("\nSaadaolevad audioraamatud:")
+for i in range(len(raamatud)):
+    print(f"{i + 1}. {raamatud[i]}")
+
+valik = int(input("\nMillist raamatut soovid kuulata? "))
+
+print(f"\nValitud raamat: {raamatud[valik - 1]}")

@@ -1,0 +1,5 @@
+with open("kiirused.txt", "r", encoding="utf-8") as f:
+    for rida in f:
+        kiirus = float(rida.strip())
+        if 20.8 <= kiirus <= 24.4:
+            print(f"Kiirus {kiirus} m/s: Tegemist on tormiga.")
