@@ -1,0 +1,131 @@
+import tkinter as tk
+import math
+
+def joonista_taht(canvas, cx, cy, suurus, varvid):
+    """Joonistab 6-tipu tähe (Taaveti tähe)"""
+    nurgad = 6
+    punktid = []
+    
+    # Joonistame 6-tipulise tähe
+    for i in range(nurgad * 2):
+        nurk = math.radians(90 + i * 360 / (nurgad * 2))
+        if i % 2 == 0:
+            # Välimised tipud
+            raadius = suurus
+        else:
+            # Sisemised tipud
+            raadius = suurus * 0.4
+        
+        x = cx + raadius * math.cos(nurk)
+        y = cy - raadius * math.sin(nurk)
+        punktid.extend([x, y])
+    
+    # Roheline taust
+    canvas.create_polygon(punktid, fill=varvid['roheline'], outline=varvid['roheline'])
+    
+    # Punane täht (veidi väiksem)
+    punktid_punane = []
+    for i in range(nurgad * 2):
+        nurk = math.radians(90 + i * 360 / (nurgad * 2))
+        if i % 2 == 0:
+            raadius = suurus * 0.75
+        else:
+            raadius = suurus * 0.3
+        
+        x = cx + raadius * math.cos(nurk)
+        y = cy - raadius * math.sin(nurk)
+        punktid_punane.extend([x, y])
+    
+    canvas.create_polygon(punktid_punane, fill=varvid['punane'], outline=varvid['punane'])
+
+def joonista_lipp():
+    aken = tk.Tk()
+    aken.title("Lipp")
+    aken.configure(bg='white')
+    
+    # Loome canvas'e
+    laius = 600
+    korgus = 400
+    canvas = tk.Canvas(aken, width=laius, height=korgus, bg='white')
+    canvas.pack()
+    
+    # Burundi lipu värvid
+    varvid = {
+        'punane': '#CE1126',
+        'roheline': '#1EB53A',
+        'valge': '#FFFFFF'
+    }
+    
+    kesk_x = laius / 2
+    kesk_y = korgus / 2
+    
+    # Valge taust
+    canvas.create_rectangle(0, 0, laius, korgus, fill=varvid['valge'], outline='')
+    
+    # Joonistame X-kujulised rohelised ja punased ribad
+    # Ülemine vasak -> alumine parem (roheline)
+    canvas.create_polygon(
+        0, 0,
+        0, korgus * 0.25,
+        laius * 0.75, korgus,
+        laius, korgus,
+        laius, korgus * 0.75,
+        laius * 0.25, 0,
+        fill=varvid['roheline'], outline=''
+    )
+    
+    # Ülemine parem -> alumine vasak (roheline)
+    canvas.create_polygon(
+        laius, 0,
+        laius, korgus * 0.25,
+        laius * 0.25, korgus,
+        0, korgus,
+        0, korgus * 0.75,
+        laius * 0.75, 0,
+        fill=varvid['roheline'], outline=''
+    )
+    
+    # Ülemine vasak -> alumine parem (punane, kitsam)
+    canvas.create_polygon(
+        0, 0,
+        0, korgus * 0.15,
+        laius * 0.85, korgus,
+        laius, korgus,
+        laius, korgus * 0.85,
+        laius * 0.15, 0,
+        fill=varvid['punane'], outline=''
+    )
+    
+    # Ülemine parem -> alumine vasak (punane, kitsam)
+    canvas.create_polygon(
+        laius, 0,
+        laius, korgus * 0.15,
+        laius * 0.15, korgus,
+        0, korgus,
+        0, korgus * 0.85,
+        laius * 0.85, 0,
+        fill=varvid['punane'], outline=''
+    )
+    
+    # Keskel valge ring
+    ringiraadiused = min(laius, korgus) * 0.2
+    canvas.create_oval(
+        kesk_x - ringiraadiused, kesk_y - ringiraadiused,
+        kesk_x + ringiraadiused, kesk_y + ringiraadiused,
+        fill=varvid['valge'], outline='', width=2
+    )
+    
+    # Joonistame 3 tähte ringi peal (tsükkel)
+    tahe_suurus = ringiraadiused * 0.25
+    tahe_kaugus = ringiraadiused * 0.55
+    
+    for i in range(3):
+        nurk = math.radians(90 + i * 120)  # Algab ülevalt, liigub päripäeva
+        tx = kesk_x + tahe_kaugus * math.cos(nurk)
+        ty = kesk_y - tahe_kaugus * math.sin(nurk)
+        joonista_taht(canvas, tx, ty, tahe_suurus, varvid)
+    
+    aken.mainloop()
+
+if __name__ == "__main__":
+    joonista_lipp()

@@ -1,0 +1,34 @@
+import tkinter as tk
+import math
+
+def draw_smiley(canvas, cx, cy, r):
+    canvas.create_oval(cx - r, cy - r, cx + r, cy + r,
+                       fill="yellow", outline="black", width=2)
+    eye_offset_x = r * 0.4
+    eye_offset_y = r * 0.4
+    eye_r = r * 0.1
+    for ex in [cx - eye_offset_x, cx + eye_offset_x]:
+        canvas.create_oval(ex - eye_r, cy - eye_offset_y - eye_r,
+                           ex + eye_r, cy - eye_offset_y + eye_r,
+                           fill="black", outline="black")
+
+    mouth_r = r * 0.6
+    canvas.create_arc(cx - mouth_r, cy - mouth_r,
+                      cx + mouth_r, cy + mouth_r,
+                      start=200, extent=140,
+                      style=tk.ARC, width=4)
+
+def main():
+    root = tk.Tk()
+    root.title("Emotikon 🙂")
+
+    W, H = 400, 400
+    canvas = tk.Canvas(root, width=W, height=H, bg="white")
+    canvas.pack()
+
+    draw_smiley(canvas, cx=W//2, cy=H//2, r=120)
+
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()

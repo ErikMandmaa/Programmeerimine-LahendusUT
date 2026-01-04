@@ -1,0 +1,82 @@
+import tkinter as tk
+
+def draw_tree(canvas, cx, base_y, layers, layer_height, max_half_width):
+    """Joonistab kihtidena kuuse (kolmnurgad), iga kihiga ehted."""
+    ornament_colors = ["red", "blue", "gold", "magenta"]
+    for i in range(layers):
+        
+        top_y = base_y - (i + 1) * layer_height
+        bottom_y = base_y - i * layer_height
+        
+        half_width = int(max_half_width * (i + 1) / layers)
+        
+        points = [
+            cx, top_y,               
+            cx - half_width, bottom_y,  
+            cx + half_width, bottom_y   
+        ]
+        
+        canvas.create_polygon(points, fill="#0b6623", outline="black")
+
+        num_ornaments = max(1, i + 1)  
+        for j in range(num_ornaments):
+            x = cx - half_width + (2 * half_width) * (j + 0.5) / num_ornaments
+            y = top_y + (bottom_y - top_y) * 0.6
+            r = max(4, layer_height // 6)  
+            color = ornament_colors[(i + j) % len(ornament_colors)]
+            canvas.create_oval(x - r, y - r, x + r, y + r, fill=color, outline="black")
+
+def draw_trunk(canvas, cx, bottom_y, trunk_width, trunk_height):
+    left = cx - trunk_width // 2
+    right = cx + trunk_width // 2
+    top = bottom_y
+    bottom = bottom_y + trunk_height
+    canvas.create_rectangle(left, top, right, bottom, fill="#8b4513", outline="black")
+
+def draw_star(canvas, cx, y, outer_r, inner_r, points=5):
+    pts = []
+    angle = -90  
+    from math import cos, sin, radians
+    for i in range(points * 2):
+        r = outer_r if i % 2 == 0 else inner_r
+        a = radians(angle + i * 360 / (points * 2))
+        pts.append(cx + r * cos(a))
+        pts.append(y + r * sin(a))
+    canvas.create_polygon(pts, fill="yellow", outline="black")
+
+def main():
+
+    root = tk.Tk()
+    root.title("Kuusk")
+
+    W, H = 400, 600
+    canvas = tk.Canvas(root, width=W, height=H, bg="white")
+    canvas.pack()
+
+    cx = W // 2
+    base_y = 380
+
+    layers = 6
+    layer_height = 45
+    max_half_width = 140
+
+    draw_tree(canvas, cx, base_y, layers, layer_height, max_half_width)
+
+    draw_trunk(canvas, cx, base_y, trunk_width=50, trunk_height=60)
+
+    star_y = base_y - layers * layer_height - 18
+    draw_star(canvas, cx, star_y, outer_r=18, inner_r=8, points=5)
+
+    for i in range(40):
+        import random
+        x = random.randint(0, W)
+        y = random.randint(0, base_y + 120)
+        r = random.randint(1, 3)
+        canvas.create_oval(x - r, y - r, x + r, y + r, fill="#e8eef6", outline="")
+
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
+
+

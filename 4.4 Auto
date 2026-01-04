@@ -1,0 +1,78 @@
+import tkinter as tk
+
+def draw_bmw(canvas, x, y, width, height):
+    """Joonistab lihtsustatud BMW auto koos kere, katuse, rataste ja logo detailidega."""
+    body_height = height // 2
+    roof_height = height // 3
+
+    canvas.create_rectangle(x, y - body_height, x + width, y,
+                            fill="#1e3d8f", outline="black")
+
+    roof_top = y - body_height - roof_height
+    roof_start = x + width * 0.25
+    roof_end = x + width * 0.75
+    points = [
+        roof_start, y - body_height,
+        roof_end, y - body_height,
+        roof_end - 40, roof_top,
+        roof_start + 40, roof_top
+    ]
+    canvas.create_polygon(points, fill="#2c2c2c", outline="black")
+
+    canvas.create_line((roof_start + roof_end) / 2, y - body_height,
+                       (roof_start + roof_end) / 2, roof_top,
+                       fill="white", width=2)
+
+    headlight_radius = 10
+    canvas.create_oval(x - 10, y - body_height + 10,
+                       x + 10, y - body_height + 30,
+                       fill="yellow", outline="black")
+
+    grill_top = y - body_height + 15
+    grill_bottom = grill_top + 20
+    grill_width = 10
+    canvas.create_rectangle(x + 15, grill_top, x + 15 + grill_width, grill_bottom,
+                            fill="black", outline="white")
+    canvas.create_rectangle(x + 30, grill_top, x + 30 + grill_width, grill_bottom,
+                            fill="black", outline="white")
+
+    wheel_radius = height // 5
+    wheel_y = y + wheel_radius // 2
+    front_wheel_x = x + width * 0.25
+    rear_wheel_x = x + width * 0.75
+
+    for wheel_x in [front_wheel_x, rear_wheel_x]:
+        canvas.create_oval(wheel_x - wheel_radius, wheel_y - wheel_radius,
+                           wheel_x + wheel_radius, wheel_y + wheel_radius,
+                           fill="black", outline="gray", width=2)
+        canvas.create_oval(wheel_x - wheel_radius//2, wheel_y - wheel_radius//2,
+                           wheel_x + wheel_radius//2, wheel_y + wheel_radius//2,
+                           fill="gray", outline="white")
+
+    logo_radius = 10
+    logo_x = x + 50
+    logo_y = y - body_height - 5
+    canvas.create_oval(logo_x - logo_radius, logo_y - logo_radius,
+                       logo_x + logo_radius, logo_y + logo_radius,
+                       fill="white", outline="black", width=2)
+    canvas.create_arc(logo_x - logo_radius, logo_y - logo_radius,
+                      logo_x + logo_radius, logo_y + logo_radius,
+                      start=0, extent=90, fill="blue", outline="black")
+    canvas.create_arc(logo_x - logo_radius, logo_y - logo_radius,
+                      logo_x + logo_radius, logo_y + logo_radius,
+                      start=180, extent=90, fill="blue", outline="black")
+
+def main():
+    root = tk.Tk()
+    root.title("Auto - BMW")
+
+    W, H = 600, 300
+    canvas = tk.Canvas(root, width=W, height=H, bg="white")
+    canvas.pack()
+
+    draw_bmw(canvas, x=150, y=200, width=300, height=100)
+
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,60 @@
+import tkinter as tk
+import math
+import random
+
+def draw_rukkilill(canvas, cx, cy, petal_count=16, petal_length=50, petal_width=20):
+    """Joonistab ühe rukkilille antud keskpunkti ümber."""
+    for i in range(petal_count):
+        angle = (2 * math.pi / petal_count) * i
+        
+        x_tip = cx + petal_length * math.cos(angle)
+        y_tip = cy + petal_length * math.sin(angle)
+
+        side_angle1 = angle + math.radians(90)
+        side_angle2 = angle - math.radians(90)
+        x_base1 = cx + petal_width * 0.5 * math.cos(side_angle1)
+        y_base1 = cy + petal_width * 0.5 * math.sin(side_angle1)
+        x_base2 = cx + petal_width * 0.5 * math.cos(side_angle2)
+        y_base2 = cy + petal_width * 0.5 * math.sin(side_angle2)
+
+        canvas.create_polygon(
+            x_tip, y_tip,
+            x_base1, y_base1,
+            x_base2, y_base2,
+            fill="#2a4db4", outline="black"
+        )
+
+    canvas.create_oval(
+        cx - 10, cy - 10,
+        cx + 10, cy + 10,
+        fill="#1e1e1e", outline="black"
+    )
+
+    for i in range(8):
+        a = (2 * math.pi / 8) * i
+        x_end = cx + 15 * math.cos(a)
+        y_end = cy + 15 * math.sin(a)
+        canvas.create_line(cx, cy, x_end, y_end, fill="black", width=1)
+
+def draw_stem(canvas, cx, cy_start, cy_end):
+    """Joonistab rohelise varre."""
+    canvas.create_line(cx, cy_start, cx, cy_end, fill="#2e8b57", width=5)
+
+def main():
+    root = tk.Tk()
+    root.title("Lill - Rukkilill")
+
+    W, H = 600, 400
+    canvas = tk.Canvas(root, width=W, height=H, bg="white")
+    canvas.pack()
+
+    for i in range(5):
+        x = random.randint(80, W - 80)
+        y = random.randint(200, H - 50)
+        draw_stem(canvas, x, y, H)
+        draw_rukkilill(canvas, x, y, petal_count=18, petal_length=45, petal_width=18)
+
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()

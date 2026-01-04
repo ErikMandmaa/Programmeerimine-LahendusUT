@@ -1,0 +1,5 @@
+kaigud = input("Sisesta käigud: ")
+
+loodud_malendid = kaigud.count("x")
+
+print(f"{loodud_malendid} malendit on löödud.")
