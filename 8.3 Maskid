@@ -1,0 +1,39 @@
+def tüüp(maski_läbinud: int) -> str:
+    filtreerimine = 100 - 100 * maski_läbinud / 500000
+
+    if filtreerimine < 95:
+        return "FFP1"
+    elif filtreerimine < 99:
+        return "FFP2"
+    else:
+        return "FFP3"
+
+
+def main():
+    failinimi = input("Sisesta failinimi: ")
+
+    try:
+        with open(failinimi, encoding="utf-8") as f:
+            read = f.readlines()
+
+        ffp2_3_kokku = 0
+
+        for rida in read:
+            rida = rida.strip()
+            if rida:
+                maski_läbinud = int(rida)
+                maski_tüüp = tüüp(maski_läbinud)
+
+                if maski_tüüp in ("FFP2", "FFP3"):
+                    ffp2_3_kokku += 1
+
+        print(f"FFP2 ja FFP3 tüüpi maske on kokku {ffp2_3_kokku}.")
+
+    except FileNotFoundError:
+        print("Viga: faili ei leitud.")
+    except ValueError:
+        print("Viga: failis leidub mittesobivaid väärtusi (pole täisarvud).")
+
+
+if __name__ == "__main__":
+    main()

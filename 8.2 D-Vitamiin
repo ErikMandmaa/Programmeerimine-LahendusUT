@@ -1,0 +1,46 @@
+def vitamiin_D(seerumi_tase: float) -> int:
+    if seerumi_tase > 75:
+        return 20
+    elif seerumi_tase > 50:
+        return 35
+    elif seerumi_tase > 25:
+        return 50
+    else:
+        return 100
+
+
+def main():
+    failinimi = input("Sisesta failinimi: ")
+
+    try:
+        with open(failinimi, encoding="utf-8") as f:
+            read = f.readlines()
+
+        normaalne_arv = 0
+
+        print("\nVitamiin D tasemed ja soovituslikud päevased annused:")
+        print("------------------------------------------------------")
+
+        for rida in read:
+            rida = rida.strip()
+            if rida:
+                tase = float(rida)
+                annus = vitamiin_D(tase)
+                print(f"{rida} nmol/l → soovituslik annus {annus} μg")
+
+                if tase > 75:
+                    normaalne_arv += 1
+
+        print("------------------------------------------------------")
+        print(f"Inimeste arv, kelle D-vitamiini tase on normaalne (>75 nmol/l): {normaalne_arv}")
+
+    except FileNotFoundError:
+        print("Viga: faili ei leitud.")
+    except ValueError:
+        print("Viga: failis leidub mittesobivaid väärtusi (pole ujukomaarvud).")
+
+
+if __name__ == "__main__":
+    main()
+
+

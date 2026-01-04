@@ -1,0 +1,35 @@
+from math import ceil
+
+def invest(summa):
+   
+    ümardatud = ceil(summa)
+    
+    investeering = ümardatud - summa
+    
+    return round(investeering, 2)
+
+
+failinimi = input("Sisesta failinimi: ")
+
+kogusumma = 0
+
+try:
+    with open(failinimi, "r", encoding="UTF-8") as fail:
+        for rida in fail:
+            makse = float(rida.strip())
+            
+            investeering = invest(makse)
+            
+            if investeering == 0:
+                print(f"Makse: {makse:.2f} EUR - Investeeringut ei tehta")
+            else:
+                print(f"Makse: {makse:.2f} EUR - Investeering: {investeering:.2f} EUR")
+            
+            kogusumma += investeering
+    
+    print(f"\nKõikide mikroinvesteeringute kogusumma: {kogusumma:.2f} EUR")
+
+except FileNotFoundError:
+    print(f"Viga: Faili '{failinimi}' ei leitud!")
+except ValueError:
+    print("Viga: Failis on vigane andmevorming!")
