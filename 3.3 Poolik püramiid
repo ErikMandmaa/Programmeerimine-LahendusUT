@@ -1,0 +1,7 @@
+lõppseeria = int(input("Sisesta pooliku püramiidi lõppseeria (naturaalarv): "))
+i = 1
+summa = 0
+while i <= lõppseeria:
+    summa += i
+    i += 1
+print(summa)

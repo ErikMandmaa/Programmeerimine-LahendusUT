@@ -1,0 +1,15 @@
+
+summa = float(input("Sisesta investeeritav summa: "))
+
+
+aastad = int(input("Sisesta investeeringu kogupikkus (aastates): "))
+
+
+tootlus = float(input("Sisesta oodatav aastatootlus (protsentides): "))
+
+
+for i in range(aastad):
+    summa += summa * (tootlus / 100)
+
+
+print(f"Investeeringu lõppsumma: {round(summa, 2)}")

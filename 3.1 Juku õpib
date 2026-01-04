@@ -1,0 +1,7 @@
+vanasõna = input("Sisesta vanasõna: ")
+
+korrad = int(input("Sisesta, mitu korda soovite vanasõna korrata: "))
+i = 0
+while i < korrad:
+    print(vanasõna)
+    i += 1
